@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #screen{
+            width:500px;
+            height: 300px;
+            text-align: center;
+            user-select: none; /*유저셀렉트는 자꾸 화면에 (특정 태그) 문자열에 블락이 씌워지는걸 방지함*/
+        }
+        #screen.waiting{    /*id선택자는 #샵으로하고 이뒤에(하위에) 클래스를 붙이려면 .쩜 하면됨 */
+            background-color: aqua;
+        }
+        #screen.ready{
+            background-color: red;
+            color:white;
+        }
+        #screen.now{
+            background-color: greenyellow;
+        }
+    </style>
+</head>
+<body>
+    <div id="screen" class="waiting" >클릭하세요</div>
+
+    <script src="반응속도.js"></script>
+</body>
+</html>

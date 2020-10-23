@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        /* //일단 css 만 으로 화면이 돌아가는 효과를 줄수가 있다.!! 그래서 왠만하면 css로 처리하는게 좋다. */
+        /* //일단 css로 카드를 만들고 카드 앞 뒤를 만든다. */
+        /* //여기 보시면 미리 카드에 대한 css를 다 만들어놓음.  */
+        .card{ 
+            display:inline-block; /*//23 여기 카드클래스 에서 디스플레이 인라인블럭 이렇게 주면된다, 그리고 좀더 거리를 띄우려면~*/
+            margin-right: 20px; /*//24 이렇게 카드 사이 간격 띄우는건 마진 라이트랑,마진 바텀해서 주면 간격이 띄워진다. */
+            margin-bottom: 20px; 
+            width:70px; /*//25 지금 그리고 카드가 넘 크다, 좀 줄이려면 위스 70px에 높이 100px로 주면된다 그리고 카드앞면뒷면 색갈을 줘야되는데,밑으로 가보자 */
+            height: 100px;
+            border: 1px solid black;
+            perspective: 1000px;
+        }
+        .card-inner{
+            position: relative;
+            width:100%;
+            height: 100%;
+            text-align:center;
+            transition:transform 0.8s;
+            transform-style:preserve-3d;
+        }
+        .card.flipped .card-inner{
+            transform: rotateY(180deg);
+        }
+        /* //이렇게 겹쳐준다 */
+        /* 앱솔루트로 하면 겹쳐지거든요.
+        그다음에 또 위에 보면 트랜스폼을 사용해서 로테이트라는 css를 잘 쓰면, 앞 뒤 이렇게 바뀌는 효과가 난다. 
+        즉, 트랜스폼과 트랜지션의 조합으로 카드를 뒤집는 효과를 낼수있다.
+        그러나
+        지금 앞,뒤로 하는것보다 색깔로 구분해서 하는게 더 나을것같다.
+        */
+        .card-front{ /*//26 여기에서 따로 카드프론트만 css만들어서 배경색 효과를 줘보자 그러면 카드가 퍼런색으로 다 바뀐다 ~  */
+            background: navy;  
+        }
+        /*//27 그리고 지금 렌더링화면에서 창의 크기에따라 카드들이 막 자동정렬이 되는데, 그게 싫고 그냥 고정하고싶다,즉 3x4로 맞추고싶다 하면, 애네 카드들을 감싸는 div를 하나 더 만들어서 걔의 위드를 고정해주면 된다.즉, 딱 애네가 들어갈 정도로 div태그를 하나 만드시면되요  */
+        .card-front, .card-back{
+            position: absolute;
+            width:100%;
+            height: 100%;
+            backface-visibility:hidden;
+        }
+         .card-back{ /*//카드 뒷면만 보이게하는것 */
+            transform: rotateY(180deg);
+        }
+    </style>
+</head>
+<body>
+    <!-- //html에서는 밑에 태그의 설명은, 밑에보면 카드가 있고, 카드안에 이너가 있고 이너 안에 프론트랑 백이있다, 그래서 css로 가서 프론트랑 백을 겹쳐준다.  -->
+    <!-- <div class="card">
+        <div class="card-inner">
+            <div class="card-front">
+                앞
+            </div>
+            <div class="card-back">
+                뒤
+            </div>
+        </div>
+    </div> -->
+    <script src="짝맞추기.js"></script>
+</body>
+</html>
